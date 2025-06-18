@@ -11,10 +11,15 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+DEBUG = os.getenv("DEBUG", "False") == "True"
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -57,6 +62,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 # CORS settings to allow all origins
 
 ROOT_URLCONF = 'backend.urls'
+
+ALLOWED_HOSTS = ['.onrender.com']
 
 TEMPLATES = [
     {
